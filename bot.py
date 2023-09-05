@@ -17,7 +17,7 @@ config = load_config('config.yaml')
 
 #yaml使用到的參數設定
 token = config['token']
-img1 = config['image_path']
+no_item_img = config['image_path']
 
 #打開
 def load():
@@ -87,7 +87,7 @@ async def delete(ctx,item, loc):
 #列出清單
 @bot.command()
 async def show(ctx):
-    pic = discord.File(f"{img1}")
+    pic = discord.File(f"{no_item_img}")
     user = str(ctx.author.id)
 
     if user in wishlists:
@@ -110,7 +110,7 @@ async def show(ctx):
 #隨機選擇
 @bot.command()
 async def roll(ctx, loc):
-    pic = discord.File(f"{img1}")
+    pic = discord.File(f"{no_item_img}")
     user = str(ctx.author.id)
 
     if user in wishlists and loc in wishlists[user] and wishlists[user][loc]:
