@@ -124,4 +124,4 @@ async def on_message(message):
 
 
 #以下TOKEN勿動    
-bot.run("YOUR TOKEN HERE")
+bot.run('YOUR TOKEN HERE')

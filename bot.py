@@ -1,6 +1,7 @@
 import discord
 import json
 import random
+import config
 from discord.ext import commands
 
 intents = discord.Intents.all()
@@ -74,7 +75,7 @@ async def delete(ctx,item, loc):
 #列出清單
 @bot.command()
 async def show(ctx):
-    pic = discord.File('your location')
+    pic = discord.File('C:\Users\s9708\Desktop\dc_bot\pic\no_item.png')
     user = str(ctx.author.id)
 
     if user in wishlists:
@@ -97,7 +98,7 @@ async def show(ctx):
 #隨機選擇
 @bot.command()
 async def roll(ctx, loc):
-    pic = discord.File('your location')
+    pic = discord.File('C:\Users\s9708\Desktop\dc_bot\pic\no_item.png')
     user = str(ctx.author.id)
 
     if user in wishlists and loc in wishlists[user] and wishlists[user][loc]:
@@ -124,4 +125,4 @@ async def on_message(message):
 
 
 #以下TOKEN勿動    
-bot.run("MTE0NTIyMTA4MjExOTQyMTk1NA.GVl44m.V54vA_amn4cpd6V0HvWBMr25ZFWhsgtCwjD18Y")
+bot.run(config.TOKEN)
