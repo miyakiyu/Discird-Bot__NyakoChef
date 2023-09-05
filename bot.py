@@ -74,7 +74,7 @@ async def delete(ctx,item, loc):
 #列出清單
 @bot.command()
 async def show(ctx):
-    pic = discord.File('C:\\Users\\s9708\\Desktop\\dc_bot\\pic\\no_item.png')
+    pic = discord.File('your location')
     user = str(ctx.author.id)
 
     if user in wishlists:
@@ -97,7 +97,7 @@ async def show(ctx):
 #隨機選擇
 @bot.command()
 async def roll(ctx, loc):
-    pic = discord.File('C:\\Users\\s9708\\Desktop\\dc_bot\\pic\\no_item.png')
+    pic = discord.File('your location')
     user = str(ctx.author.id)
 
     if user in wishlists and loc in wishlists[user] and wishlists[user][loc]:
