@@ -1,10 +1,23 @@
 import discord
 import json
 import random
+import yaml
 from discord.ext import commands
 
+#初始化
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix = "!", intents = intents)
+
+#載入yaml
+def load_config(file_path):
+    with open(file_path, 'r') as config_file:
+        config_data = yaml.safe_load(config_file)
+    return config_data
+config = load_config('config.yaml')
+
+#yaml使用到的參數設定
+token = config['token']
+img1 = config['image_path']
 
 #打開
 def load():
@@ -74,7 +87,7 @@ async def delete(ctx,item, loc):
 #列出清單
 @bot.command()
 async def show(ctx):
-    pic = discord.File('your location')
+    pic = discord.File(f"{img1}")
     user = str(ctx.author.id)
 
     if user in wishlists:
@@ -97,7 +110,7 @@ async def show(ctx):
 #隨機選擇
 @bot.command()
 async def roll(ctx, loc):
-    pic = discord.File('your location')
+    pic = discord.File(f"{img1}")
     user = str(ctx.author.id)
 
     if user in wishlists and loc in wishlists[user] and wishlists[user][loc]:
@@ -121,7 +134,5 @@ async def on_message(message):
             
     await bot.process_commands(message)
 
-
-
-#以下TOKEN勿動    
-bot.run('YOUR TOKEN HERE')
+   
+bot.run(f"{token}")
